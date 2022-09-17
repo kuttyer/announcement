@@ -11,6 +11,7 @@ def orig_name_finders():
 
         for announcement in os.listdir(path):
             if announcement == archived_name:
+                print(f'Finded a filie on {announcement} name and rename to {orig_name}.')
                 os.rename(os.path.join(path, announcement), os.path.join(path, orig_name))
 
 
