@@ -1,8 +1,10 @@
 import os
 import datetime
 
+path = './work_dir/'
 
-data = os.stat('work_dir/!sample.mkv')
-last_mod = datetime.datetime.fromtimestamp(data.st_mtime)
-print(data.st_size, 'bytes ', last_mod, 'last mod date')
+for file in os.listdir(path):
+    data = os.stat(os.path.join(path, file))
+    last_mod = datetime.datetime.fromtimestamp(data.st_mtime)
+    print(file, data.st_size, 'bytes ', last_mod, 'last mod date')
 
