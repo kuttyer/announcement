@@ -4,7 +4,7 @@ path = './work_dir/'
 
 def orig_name_finders():
     renamed_file = 0
-    with open(f'{path}/name_source.txt', 'r') as f:
+    with open('name_source.txt', 'r') as f:
         lines = (f.read().splitlines())
 
     for line in lines:
