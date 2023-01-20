@@ -1,5 +1,5 @@
 import os
-path = './work_dir2/'
+path = './work_dir3/'
 
 
 def orig_name_finders():

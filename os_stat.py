@@ -1,7 +1,7 @@
 import os
 import datetime
 
-path = './work_dir/'
+path = './work_dir3/'
 splitted_line_list = []
 
 
@@ -21,9 +21,14 @@ def file_rename_by_parameters():
 
 
 def file_rename(backup_filename, size, last_mod_date):
-    hit = [item for item in amslist_to_tuple.splitted_line_tuple if item[1] == size and str(item[2])[0:16] == str(last_mod_date[0:16])]
-    print(hit[0][0])
-    os.rename(os.path.join(path, backup_filename), os.path.join(path, hit[0][0]))
+    #print(backup_filename, size, last_mod_date)
+    for item in amslist_to_tuple.splitted_line_tuple:
+        print(str(item[2])[0:16], str(last_mod_date[0:16]))
+
+
+
+    #hit = [item for item in amslist_to_tuple.splitted_line_tuple if item[1] == size and str(item[2])[0:16] == str(last_mod_date[0:16])]
+    #os.rename(os.path.join(path, backup_filename), os.path.join(path, hit))
 
 
 amslist_to_tuple()

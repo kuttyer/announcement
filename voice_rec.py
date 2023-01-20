@@ -2,7 +2,7 @@ import soundfile
 import speech_recognition as sr
 
 path = "./work_dir/"
-work_file = "Belga_Nagykovetseg"
+work_file = "Angol_Udvozlo_456-8856.wav"
 data, samplerate = soundfile.read(path+work_file)
 soundfile.write('new.wav', data, samplerate, subtype='PCM_24')
 
@@ -15,3 +15,5 @@ with sr.AudioFile(filename) as source:
     # recognize (convert from speech to text)
     text = r.recognize_google(audio_data, language="en-EN")
     print(work_file+":", text)
+    text = r.recognize_google(audio_data, language="hu-HU")
+    print(work_file + ":", text)
