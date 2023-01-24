@@ -17,13 +17,15 @@ def amslist_to_tuple():
 def walk_through_process():
     for item in amslist_to_tuple.splitted_line_tuple:
         temp_name_list = []
-        #print(item[0])
         for file in os.listdir(path):
             file_stats = os.stat(os.path.join(path, file))
             if str(file_stats.st_size) == str(item[1]):
                 temp_name_list.append(item[0])
                 if len(temp_name_list) == 1:
-                    print(temp_name_list)
+                    print(file, item[0]+".wav")
+                    os.rename(os.path.join(path, file), os.path.join(path, item[0]+".wav"))
+                else:
+                    print("kettő van")
 
 
 def file_rename_by_parameters():
