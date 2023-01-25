@@ -20,12 +20,15 @@ def walk_through_process():
         for file in os.listdir(path):
             file_stats = os.stat(os.path.join(path, file))
             if str(file_stats.st_size) == str(item[1]):
-                temp_name_list.append(item[0])
+                temp_name_list.append(item)
                 if len(temp_name_list) == 1:
-                    print(file, item[0]+".wav")
-                    os.rename(os.path.join(path, file), os.path.join(path, item[0]+".wav"))
+                    a = 1
+                    #print(file, item[0]+".wav")
+                    #os.rename(os.path.join(path, file), os.path.join(path, item[0]+".wav"))
                 else:
-                    print("kettő van")
+                    print(temp_name_list)
+
+
 
 
 def file_rename_by_parameters():
