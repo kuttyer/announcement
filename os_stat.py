@@ -11,7 +11,7 @@ def amslist_to_tuple():
         for line in x:
             splitted_line_list.append(line.strip().split(','))
         amslist_to_tuple.splitted_line_tuple = tuple(splitted_line_list)
-        print(amslist_to_tuple.splitted_line_tuple)
+        #print(amslist_to_tuple.splitted_line_tuple)
 
 
 def walk_through_process():
@@ -20,13 +20,20 @@ def walk_through_process():
         for file in os.listdir(path):
             file_stats = os.stat(os.path.join(path, file))
             if str(file_stats.st_size) == str(item[1]):
-                temp_name_list.append(item)
+                temp_name_list.append(file)
                 if len(temp_name_list) == 1:
                     a = 1
                     #print(file, item[0]+".wav")
                     #os.rename(os.path.join(path, file), os.path.join(path, item[0]+".wav"))
                 else:
-                    print(temp_name_list)
+                    #print(temp_name_list, item)
+                    for i in temp_name_list:
+                        data = os.stat(os.path.join(path, i))
+                        last_mod = str(datetime.datetime.fromtimestamp(data.st_mtime))[0:16]
+                        #print(data, last_mod.replace('-','.'), item)
+                        if str(last_mod.replace('-','.')) == str(item[2]):
+                            print(item[0], i, "kutykurutty")
+
 
 
 
