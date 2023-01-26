@@ -32,7 +32,7 @@ def walk_through_process():
                         last_mod = str(datetime.datetime.fromtimestamp(data.st_mtime))[0:16]
                         #print(data, last_mod.replace('-','.'), item)
                         if str(last_mod.replace('-','.')) == str(item[2]):
-                            print(item[0], i, "kutykurutty")
+                            print(item, i, "kutykurutty")
 
 
 
