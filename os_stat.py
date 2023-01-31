@@ -19,7 +19,7 @@ def walk_through_process():
         temp_name_list = []
         for file in os.listdir(path):
             file_stats = os.stat(os.path.join(path, file))
-            if str(file_stats.st_size) == str(item[1]) :
+            if str(file_stats.st_size) == str(item[1]):
 
 
 
