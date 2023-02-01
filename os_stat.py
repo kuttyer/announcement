@@ -16,40 +16,27 @@ def amslist_to_tuple():
 
 def walk_through_process():
     for item in amslist_to_tuple.splitted_line_tuple:
-        #print(item)
+        temp_name_list = []
         for file in os.listdir(path):
-            #print(item, file)
             file_stats = os.stat(os.path.join(path, file))
             last_mod = str(datetime.datetime.fromtimestamp(file_stats.st_mtime))[0:16]
-            #print(last_mod.replace('-','.')[0:16],"xxx" ,(item[2]))
-            #if str(last_mod.replace('-', '.')) == str(item[2]):
             if str(file_stats.st_size) == str(item[1]) and (file[0:2] == "c-"):
-                print("Match", item, file, last_mod)
+                temp_name_list.append(file)
+        #print(temp_name_list)
+    rename_task(temp_name_list, file, item)
 
 
-
-
-
-
-
-
-                """temp_name_list.append(file)
-        print(item[0])
-        if len(temp_name_list) == 1:
-            a = 1
-            print(f'Rename {file}  to  {item[0]}.wav', len(temp_name_list))
-            #os.rename(os.path.join(path, file), os.path.join(path, item[0]+".wav"))
-        if len(temp_name_list) > 1:
-            #print(temp_name_list, item)
-            for i in temp_name_list:
-                data = os.stat(os.path.join(path, i))
-                last_mod = str(datetime.datetime.fromtimestamp(data.st_mtime))[0:16]
-                #print(data, last_mod.replace('-','.'), item)
-                if str(last_mod.replace('-','.')) == str(item[2]):
-                    print(f'Rename {file}  to  {item[0]}.wav')
-                    #os.rename(os.path.join(path, file), os.path.join(path, item[0] + ".wav"))"""
-
-
+def rename_task(temp_name_list, file, item):
+    if len(temp_name_list) == 1:
+        print(f'1 Rename {file}  to  {item[0]}.wav', len(temp_name_list))
+        # os.rename(os.path.join(path, file), os.path.join(path, item[0]+".wav"))
+    if len(temp_name_list) > 1:
+        for i in temp_name_list:
+            data = os.stat(os.path.join(path, i))
+            last_mod = str(datetime.datetime.fromtimestamp(data.st_mtime))[0:16]
+            if str(last_mod.replace('-', '.')) == str(item[2]) and str(last_mod.replace('-', '.')) == str(item[2]):
+                print(f'2 Rename {file}  to  {item[0]}.wav')
+                # os.rename(os.path.join(path, file), os.path.join(path, item[0] + ".wav"))"""
 
 
 
