@@ -16,10 +16,15 @@ def amslist_to_tuple():
 
 def walk_through_process():
     for item in amslist_to_tuple.splitted_line_tuple:
-        temp_name_list = []
+        #print(item)
         for file in os.listdir(path):
+            #print(item, file)
             file_stats = os.stat(os.path.join(path, file))
-            if str(file_stats.st_size) == str(item[1]):
+            last_mod = str(datetime.datetime.fromtimestamp(file_stats.st_mtime))[0:16]
+            #print(last_mod.replace('-','.')[0:16],"xxx" ,(item[2]))
+            #if str(last_mod.replace('-', '.')) == str(item[2]):
+            if str(file_stats.st_size) == str(item[1]) and (file[0:2] == "c-"):
+                print("Match", item, file, last_mod)
 
 
 
