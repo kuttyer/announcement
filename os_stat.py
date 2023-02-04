@@ -6,7 +6,7 @@ splitted_line_list = []
 
 
 def amslist_to_tuple():
-    with open('ams_list.txt', 'r') as f:
+    with open('ams_list.csv', 'r') as f:
         x = f.readlines()
         for line in x:
             splitted_line_list.append(line.strip().split(','))
@@ -22,8 +22,8 @@ def walk_through_process():
             last_mod = str(datetime.datetime.fromtimestamp(file_stats.st_mtime))[0:16]
             if str(file_stats.st_size) == str(item[1]) and (file[0:2] == "c-"):
                 temp_name_list.append(file)
-        #print(temp_name_list)
-    rename_task(temp_name_list, file, item)
+        print(temp_name_list)
+        rename_task(temp_name_list, file, item)
 
 
 def rename_task(temp_name_list, file, item):
