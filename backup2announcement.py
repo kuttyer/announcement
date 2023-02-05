@@ -20,14 +20,19 @@ def csv2df():
 def rename_process():
     for index, row in csv2df.df_orig.iterrows():
         file_size = (row['size'])
+        file_lastmod = (row['lastmod'])
+        orig_name = (row['name'])
         if csv2df.df_orig['size'].value_counts()[file_size] == 1:
             backup_name = (csv2df.df_backup[csv2df.df_backup['size'] == file_size]['name'].tolist())[0]
-            print(f"Rename from {backup_name} to {row['name']}!", file_size)
+            print(backup_name, row['name'] + '.wav')
+            os.rename(os.path.join(path, backup_name), os.path.join(path, orig_name + ".wav"))
         else:
-            a = 1
+            xxx = csv2df.df_backup.loc[(csv2df.df_backup['size'] == file_size) & (csv2df.df_backup['lastmod'] == file_lastmod), 'name'].tolist()
+            if len(xxx) == 1:
+                print(xxx[0], row['name'] + '.wav')
+                os.rename(os.path.join(path, xxx[0]), os.path.join(path, orig_name + ".wav"))
 
-
-#dir2csv()
+dir2csv()
 csv2df()
 rename_process()
 
