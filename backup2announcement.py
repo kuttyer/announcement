@@ -4,6 +4,8 @@ import datetime
 
 path = './work_dir3/'
 def dir2csv():
+    if os.path.exists("backup_dir.csv"):
+        os.remove("backup_dir.csv")
     with open('backup_dir.csv', 'a') as bd:
         bd.write('name, size, lastmod\n')
         for file in os.listdir(path):
@@ -18,6 +20,8 @@ def csv2df():
 
 
 def rename_process():
+    if os.path.exists("leftover.csv"):
+        os.remove("leftover.csv")
     for index, row in csv2df.df_orig.iterrows():
         file_size = (row['size'])
         file_lastmod = (row['lastmod'])
@@ -36,7 +40,11 @@ def rename_process():
                     lo.write(orig_name + '\n')
 
 
+def main():
+    dir2csv()
+    csv2df()
+    rename_process()
 
-#dir2csv()
-csv2df()
-rename_process()
+
+if __name__ == '__main__':
+    main()
